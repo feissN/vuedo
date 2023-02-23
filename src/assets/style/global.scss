@@ -1,0 +1,26 @@
+button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 0.25rem;
+    background-color: gray;
+    color: white;
+    padding: 0.5rem;
+    transition: background-color 200ms ease-out;
+
+    &:hover {
+        background-color: hsl(0, 0%, 40%);
+    }
+
+    &:disabled {
+        background-color: hsl(0, 0%, 20%);
+        color: gray;
+        cursor: not-allowed;
+    }
+}
+
+input,
+textarea {
+    padding: 0.25rem;
+    outline: none;
+    border: 1px solid black;
+}

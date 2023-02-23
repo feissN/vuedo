@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import LoginButton from "./components/LoginButton.vue";
-import LogoutButton from "./components/LogoutButton.vue";
+import Navigation from "./components/Navigation.vue";
 import LoadingSpinner from "./components/LoadingSpinner.vue";
 
 import { onAuthStateChanged } from "firebase/auth";
@@ -29,13 +28,7 @@ onBeforeUnmount(() => {
             <RouterLink to="/">
                 <h1>Vuedo</h1>
             </RouterLink>
-            <nav>
-                <RouterLink to="/" :active-class="'active'">Home</RouterLink>
-                <RouterLink to="/about" :active-class="'active'">About</RouterLink>
-                <RouterLink v-if="authStore.loggedIn" to="/todos" :active-class="'active'">Todos</RouterLink>
-                <LoginButton v-if="!authStore.loggedIn" />
-                <LogoutButton v-if="authStore.loggedIn" />
-            </nav>
+            <Navigation />
         </header>
 
         <main>
@@ -60,22 +53,6 @@ onBeforeUnmount(() => {
         a {
             text-decoration: none;
             color: black;
-        }
-
-        nav {
-            display: flex;
-            gap: 1rem;
-            display: flex;
-            align-content: center;
-
-            a {
-                display: flex;
-                align-items: center;
-
-                &.active {
-                    color: gray;
-                }
-            }
         }
     }
 

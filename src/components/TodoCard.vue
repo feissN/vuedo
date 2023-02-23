@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { TodoInterface } from "@/interfaces/todos.interface";
 import router from "@/router";
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import { marked } from "marked";
 
 const props = withDefaults(defineProps<{
     todo: TodoInterface,
@@ -31,6 +32,10 @@ const handleSave = () => {
     editMode.value = false;
 }
 
+const markdownText = computed(() => {
+    return marked(props.todo.content);
+})
+
 </script>
 
 <template>
@@ -50,7 +55,8 @@ const handleSave = () => {
         <hr>
 
         <div v-if="!editMode" class="content">
-            {{ todo.content }}
+            <div class="text" v-html="markdownText"></div>
+            <div class="fade"></div>
         </div>
         <textarea v-if="editMode" class="content" v-model="newContent"></textarea>
 
@@ -114,9 +120,29 @@ const handleSave = () => {
     &.small {
         cursor: pointer;
         max-width: 300px;
-        max-height: 600px;
         min-width: 300px;
-        min-height: 150px;
+        height: 150px;
+        position: relative;
+        transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+
+        .content {
+            overflow: hidden;
+            max-height: 90px;
+
+            .fade {
+                width: 100%;
+                height: 40px;
+                position: absolute;
+                bottom: 3rem;
+                left: 0;
+                background: linear-gradient(transparent 0%, white 100%);
+            }
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 3px 5px black;
+        }
     }
 
     &.big {
@@ -132,6 +158,22 @@ const handleSave = () => {
         .content {
             flex: 1;
             resize: none;
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .todo-card {
+
+        &.big {
+            .title {
+                flex-direction: column;
+                align-items: unset;
+
+                .buttons {
+                    justify-content: space-between;
+                }
+            }
         }
     }
 }

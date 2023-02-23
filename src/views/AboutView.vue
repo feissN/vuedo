@@ -13,3 +13,19 @@
         </div>
     </div>
 </template>
+
+<style scoped lang="scss">
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    .explanation {
+        background-color: white;
+        border-radius: 0.25rem;
+        padding: 1rem;
+    }
+}
+</style>
