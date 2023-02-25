@@ -103,7 +103,6 @@ onUnmounted(() => {
 
         nav {
             z-index: 200;
-            border-top: 3px solid black;
             background-color: lightgrey;
             position: fixed;
             top: 0;
