@@ -73,6 +73,7 @@ const markdownText = computed(() => {
     border-radius: 0.25rem;
     display: flex;
     flex-direction: column;
+    border: 1px solid lightgray;
 
     .title {
         display: flex;
@@ -91,14 +92,6 @@ const markdownText = computed(() => {
             gap: 1rem;
             justify-content: center;
             align-items: center;
-
-            button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 25px;
-                min-height: 25px;
-            }
 
             .delete {
                 width: 25px;
@@ -123,7 +116,7 @@ const markdownText = computed(() => {
         min-width: 300px;
         height: 150px;
         position: relative;
-        transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+        transition: border 200ms ease-out;
 
         .content {
             overflow: hidden;
@@ -133,15 +126,14 @@ const markdownText = computed(() => {
                 width: 100%;
                 height: 40px;
                 position: absolute;
-                bottom: 3rem;
+                bottom: calc(1rem + 1.5rem);
                 left: 0;
                 background: linear-gradient(transparent 0%, white 100%);
             }
         }
 
         &:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 3px 5px black;
+            border: 1px solid gray;
         }
     }
 

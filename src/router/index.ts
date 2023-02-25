@@ -17,6 +17,11 @@ const router = createRouter({
             component: () => import('../views/AboutView.vue')
         },
         {
+            path: '/create',
+            name: 'create',
+            component: () => import('../views/CreateNoteView.vue'),
+        },
+        {
             path: '/todos',
             name: 'todos',
             component: () => import('../views/TodosView.vue'),
@@ -24,7 +29,7 @@ const router = createRouter({
         {
             path: '/todo/:id',
             name: 'todo',
-            component: () => import('../views/SingleTodo.vue'),
+            component: () => import('../views/SingleTodoView.vue'),
         },
         {
             path: "/:catchAll(.*)",

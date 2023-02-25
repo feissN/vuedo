@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import NewTodoButton from "@/components/NewTodoButton.vue";
 import TodoCard from "@/components/TodoCard.vue";
-import { auth, db } from "@/firebase.config";
+import { db } from "@/firebase.config";
 import type { TodoInterface } from "@/interfaces/todos.interface";
 import router from '@/router';
 import { useAuthStore } from '@/stores/auth';
@@ -59,7 +58,7 @@ loadTodos();
 
 <template>
     <div class="todos-view">
-        <NewTodoButton @success="loadTodos" />
+        <button @click="router.push('/create')">New todo</button>
 
         <div class="todos">
             <TodoCard v-for="todo in todos" :todo="todo" @delete="handleDelete" />
