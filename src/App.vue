@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './firebase.config';
 import { onBeforeUnmount } from 'vue';
 import { useAuthStore } from './stores/auth';
+import ReloadPWAVue from './components/ReloadPWA.vue';
 
 const authStore = useAuthStore();
 
@@ -22,6 +23,7 @@ onBeforeUnmount(() => {
 
 <template>
     <LoadingSpinner v-if="authStore.loading" />
+    <ReloadPWAVue />
 
     <div class="app">
         <header>

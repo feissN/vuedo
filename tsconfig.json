@@ -1,16 +1,47 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-
-  "references": [
-    {
-      "path": "./tsconfig.config.json"
-    }
-  ]
+    "extends": "@vue/tsconfig/tsconfig.web.json",
+    "references": [
+        {
+            "path": "./tsconfig.config.json"
+        }
+    ],
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "lib": [
+            "ESNext",
+            "DOM",
+            "WebWorker"
+        ],
+        "types": [
+            "vite-plugin-pwa/client",
+            "vite/client"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue"
+    ],
+    "exclude": [
+        "dist",
+        "node_modules",
+        "test",
+        "test.ts",
+        "**/*.spec.ts",
+        "**/*.worker.ts"
+    ]
 }
