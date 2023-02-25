@@ -7,6 +7,18 @@ import { marked } from 'marked';
 import { computed, ref } from 'vue';
 
 const authStore = useAuthStore();
+
+// Handle route authentication (if the current user is actually logged in)
+if (!authStore.loading && !authStore.loggedIn) {
+    router.push("/home")
+}
+authStore.$subscribe((_mutation, state) => {
+    if (!state.loading && !state.loggedIn) {
+        router.push("/home")
+        return;
+    }
+});
+
 const editMode = ref(true);
 
 const title = ref("");
