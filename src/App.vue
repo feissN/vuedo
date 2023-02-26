@@ -63,7 +63,7 @@ onBeforeUnmount(() => {
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 460px) {
     .app {
         main {
             padding: 1rem;

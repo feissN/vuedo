@@ -80,7 +80,7 @@ loadTodos();
 }
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 460px) {
     .todos-view {
         .todos {
             justify-content: center;

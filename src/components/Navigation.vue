@@ -4,13 +4,15 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import LoginButton from './LoginButton.vue';
 import LogoutButton from './LogoutButton.vue';
 
+const burgerThreshold = 460;
+
 const authStore = useAuthStore();
 
-const smallerWidth = ref(window.innerWidth < 400);
+const smallerWidth = ref(window.innerWidth < burgerThreshold);
 const isMenuCollapsed = ref(false);
 
 const onResize = () => {
-    smallerWidth.value = window.innerWidth < 400;
+    smallerWidth.value = window.innerWidth < burgerThreshold;
 }
 
 onMounted(() => {

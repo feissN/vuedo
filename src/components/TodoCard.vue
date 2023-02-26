@@ -41,8 +41,11 @@ const markdownText = computed(() => {
 <template>
     <div :class="'todo-card ' + size" @click="size === 'small' && router.push(`todo/${todo.id}`)">
         <div class="title">
-            <h3 v-if="!editMode">{{ todo.title }}</h3>
-            <input v-if="editMode" v-model="newTitle" />
+            <div class="title-action">
+                <button v-if="props.size === 'big'" type="button" @click="router.push('../todos')">Back</button>
+                <h3 v-if="!editMode">{{ todo.title }}</h3>
+                <input v-if="editMode" v-model="newTitle" />
+            </div>
             <div class="buttons">
                 <button v-if="editMode" class="apply" @click="handleSave">Save</button>
                 <button v-if="editMode" class="reject" @click="editMode = !editMode">Reject</button>
@@ -141,6 +144,11 @@ const markdownText = computed(() => {
         min-height: calc(100vh - 11rem);
 
         .title {
+            .title-action {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
 
             input {
                 flex: 1;
@@ -154,9 +162,8 @@ const markdownText = computed(() => {
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 460px) {
     .todo-card {
-
         &.big {
             .title {
                 flex-direction: column;
@@ -166,6 +173,11 @@ const markdownText = computed(() => {
                     justify-content: space-between;
                 }
             }
+        }
+
+        &.small {
+            max-width: unset;
+            width: unset;
         }
     }
 }

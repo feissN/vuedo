@@ -54,8 +54,11 @@ const markdownText = computed(() => {
 <template>
     <div class="create-todo">
         <div class="title">
-            <input v-if="editMode" v-model="title" />
-            <h3 v-else>{{ title }}</h3>
+            <div class="title-action">
+                <button type="button" @click="router.push('todos')">Back</button>
+                <input v-if="editMode" v-model="title" />
+                <h3 v-else>{{ title }}</h3>
+            </div>
             <div class="buttons">
                 <button class="apply" @click="handleSave">Create</button>
                 <button class="toggle-preview" @click="editMode = !editMode">Toggle preview</button>
@@ -107,6 +110,12 @@ const markdownText = computed(() => {
     }
 
     .title {
+        .title-action {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
 
         input {
             flex: 1;
@@ -119,7 +128,7 @@ const markdownText = computed(() => {
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 460px) {
     .create-todo {
         .title {
             flex-direction: column;
